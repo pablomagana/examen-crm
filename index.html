@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+
+                PABLO MAGAÑA
+
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+
+
+        <link rel="stylesheet" type="text/css" href="themes/jquery.mobile.icons.min.css"/>
+        <link rel="stylesheet" type="text/css" href="./jquery/jquery.mobile-1.4.5.min.css"/>
+
+        <!--estil personalitzat-->
+        <link rel="stylesheet" type="text/css" href="themes/CRM.css"/>
+        <link rel="stylesheet" type="text/css" href="themes/CRM.min.css"/>
+
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>CRM</title>
+    </head>
+    <body>
+       <div data-role="page" id="principal">
+            <div data-role="header">
+              <a class="list-a" href="" data-icon="home" ></a>
+                <h1>Welcome CRM</h1>
+            </div>
+              <ul id="listaempleados" data-role="listview" data-autodividers="true">
+                <li>
+                  <a href="#editnew">
+                    <div class=".divnew">
+                      <h2 class="h2new"><img class="imgnew" src="./img/pluss64.png"/>Añadir ficha</h2>
+                    </div>
+                  </a>
+                </li>
+                </ul>
+       </div>
+<!--pages-->
+       <div data-role="page" id="item" class="item">
+         <div data-role="header">
+           <a class="list-a" href="#principal" data-icon="home" ></a>
+             <h1>Welcome CRM</h1>
+         </div>
+         <a id="edicionenlace" href="#editnew" class="edit" ><img class="imgedit" src="./img/edit.png"/></a>
+         <a id="eliminarRegistro" href="#principal" class="edit" ><img id="eliminarRegistro" class="imgdelete" src="./img/delete24.png"/></a>
+         <!--<form action="#editnew" class="edit">
+           <input type="hidden" name="idtarget" value="1"/>
+           <button class="imgedit" type="submit" name="imgedit" value="editar">
+             <img src="./img/edit.png">
+           </button>
+         </form>-->
+         <div class="contenido">
+          <h1>Ficha Personal</h1>
+
+            <img id="fichaimg" class="imgdatosficha" src="./img/user-64.png"/>
+            <div class="datos">
+              <h3 id="fichanombre"></h3>
+              <h4 id="fichadni"></h4>
+              <h4 id="fichacargo"></h4>
+              <h5 id="fichaedad"></h5>
+              <h5 id="fichalocalidad"></h5>
+              <h5 id="fichadireccion"></h5>
+            </div>
+            <hr style="margin-left: -5%;" width=110%  align="center">
+            <div>
+              <img src="./img/contacts32.png" class="telContactos"/>
+              <div class="tel">
+                  <p id="fichatel1"></p>
+                  <p id="fichatel2"></p>
+              </div>
+            </div>
+            <hr style="margin-left: -5%;" width=110% align="center">
+            <div>
+              <img class="imgmail" src="./img/mail.png"/>
+              <div class="mail">
+                  <p id="fichacorreo"></p>
+              </div>
+            </div>
+         </div>
+       </div>
+       <!--page edit / new target-->
+       <div data-role="page" id="editnew" class="editnew">
+         <div data-role="header">
+           <a class="list-a" href="#principal" data-icon="home" ></a>
+           <h1>Welcome CRM - Formulario de registro</h1>
+         </div>
+        <div role="main" class="ui-content">
+          <p class="advertencia">* Campos requeridos</p>
+              <form method="post">
+                <img src="./img/foto32.png" id="imgfile" width="50px" height="50px"/>
+                <input type="hidden" name="tipo" id="inputtipo" value="nuevo">
+                <input type="text" name="inputdni" id="inputdni" placeholder="DNI *" required>
+                <input type="text" name="inputname" id="inputname" placeholder="Nombre *" required>
+                <input type="text" name="inputsurname" id="inputsurname" placeholder="Apellidos *" required>
+                <input type="text" name="inputage" id="inputage" placeholder="edad *" required>
+                <input type="text" name="inputjob" id="inputjob" placeholder="Cargo *" required>
+                <input type="text" name="inputaddress" id="inputaddress" placeholder="Dirección *"required>
+                <input type="text" name="inputlocality" id="inputlocality" placeholder="Localidad *" required>
+                <input type="text" name="inputphone1" id="inputphone1" placeholder="telefono 1 *" required>
+                <input type="text" name="inputphone2" id="inputphone2" placeholder="telefono 2 " >
+                <input type="text" name="inputmail" id="inputmail" placeholder="Correo electronico *" required>
+                <input type="Button" class="ui-btn" id="nuevaficha" value="Registrar"/>
+       </div>
+       <script type="text/javascript" src="./jquery/jquery-1.11.3.min.js"></script>
+       <script type="text/javascript" src="./jquery/jquery.mobile-1.4.5.min.js"></script>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/edicion.js"></script>
+        <script type="text/javascript" src="js/registro.js"></script>
+        <script type="text/javascript" src="js/camara.js"></script>
+    </body>
+</html>
