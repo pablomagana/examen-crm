@@ -48,7 +48,6 @@
                $("#principal ul").append("<li empleado-dni='"+fila.dni+"'><a href='#item'><img class='imgdatoslista' src='./img/user-64.png' /><div><h2>"+fila.nombre+"</h2><p>"+fila.cargo+"</p></div></a></li>").listview("refresh");
              }else{
                $("#principal ul").append("<li empleado-dni='"+fila.dni+"'><a href='#item'><img class='imgdatoslista' src="+fila.img+" /><div><h2>"+fila.nombre+"</h2><p>"+fila.cargo+"</p></div></a></li>").listview("refresh");
-
              }
            }
          console.log("3 consulta DB exitosa");
