@@ -170,7 +170,7 @@ var confirmDB={
   createLocalDB:function(tx){
     console.log("tarariro");
     tx.executeSql("DROP TABLE IF EXISTS empleados");
-    var sql="CREATE TABLE IF NOT EXISTS empleados (dni VARCHAR(10) PRIMARY KEY, nombre VARCHAR(100), apellidos VARCHAR(256),edad VARCHAR(10), cargo VARCHAR(128), direccion VARCHAR(500), localidad VARCHAR(128), telefono1 VARCHAR(50), telefono2 VARCHAR(50), correoelectronico VARCHAR(200),img VARCHAR(300));";
+    var sql="CREATE TABLE IF NOT EXISTS empleados (dni VARCHAR(10) PRIMARY KEY, nombre VARCHAR(100), apellidos VARCHAR(256),edad VARCHAR(10), cargo VARCHAR(128), direccion VARCHAR(500), localidad VARCHAR(128), telefono1 VARCHAR(50), telefono2 VARCHAR(50), correoelectronico VARCHAR(200),img VARCHAR(300),ultimos INTEGER);";
     tx.executeSql(sql);
 
   },
