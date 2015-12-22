@@ -30,7 +30,7 @@
      this.db.transaction(this.mostrarDB,this.mostrarDBError);
    },
    mostrarDB:function(tx){
-     var sql="SELECT * FROM empleados ORDER BY nombre ASC;";
+     var sql="SELECT * FROM empleados ORDER BY ultimos ASC;";
      console.log("lanzamos la consola");
      tx.executeSql(
        sql,
@@ -45,7 +45,7 @@
              var fila=result.rows.item(i);
              console.log("row "+i+" nombre: "+fila.nombre);
              if(fila.img=="sin imagen"){
-               $("#principal ul").append("<li empleado-dni='"+fila.dni+"'><a href='#item'><img class='imgdatoslista' src='user-64.png' /><div><h2>"+fila.nombre+"</h2><p>"+fila.cargo+"</p></div></a></li>").listview("refresh");
+               $("#principal ul").append("<li empleado-dni='"+fila.dni+"'><a href='#item'><img class='imgdatoslista' src='./img/user-64.png' /><div><h2>"+fila.nombre+"</h2><p>"+fila.cargo+"</p></div></a></li>").listview("refresh");
              }else{
                $("#principal ul").append("<li empleado-dni='"+fila.dni+"'><a href='#item'><img class='imgdatoslista' src="+fila.img+" /><div><h2>"+fila.nombre+"</h2><p>"+fila.cargo+"</p></div></a></li>").listview("refresh");
 
@@ -175,13 +175,14 @@ var confirmDB={
     var sql="CREATE TABLE IF NOT EXISTS empleados (dni VARCHAR(10) PRIMARY KEY, nombre VARCHAR(100), apellidos VARCHAR(256),edad VARCHAR(10), cargo VARCHAR(128), direccion VARCHAR(500), localidad VARCHAR(128), telefono1 VARCHAR(50), telefono2 VARCHAR(50), correoelectronico VARCHAR(200),img VARCHAR(300),ultimos INTEGER);";
     tx.executeSql(sql);
 console.log("tarariro2");
-        tx.executeSql("insert into empleados values('dni1','nombre1','apellidos1','edad1','cargo1','direccion1','localidad1','telefono11','telefono21','correoelectronico1','img',1);");
+        tx.executeSql("insert into empleados values('dni1','nombre1','apellidos1','edad1','cargo1','direccion1','localidad1','telefono11','telefono21','correoelectronico1','sin imagen',1);");
 console.log("tarariro3");
-        tx.executeSql("insert into empleados(dni,nombre,apellidos,edad,cargo,direccion,localidad,telefono1,telefono2,correoelectronico,img,ultimos) values('dni2','nombre2','apellidos2','edad1','cargo2','direccion2','localidad1','telefono12','telefono22','correoelectronico2','sin imagen',1);");
-        tx.executeSql("insert into empleados(dni,nombre,apellidos,edad,cargo,direccion,localidad,telefono1,telefono2,correoelectronico,img,ultimos) values('dni3','nombre3','apellidos3','edad1','cargo3','direccion3','localidad1','telefono13','telefono23','correoelectronico3','sin imagen',1);");
-        tx.executeSql("insert into empleados(dni,nombre,apellidos,edad,cargo,direccion,localidad,telefono1,telefono2,correoelectronico,img,ultimos) values('dni4','nombre4','apellidos4','edad1','cargo4','direccion4','localidad1','telefono14','telefono24','correoelectronico4','sin imagen',0);");
-        tx.executeSql("insert into empleados(dni,nombre,apellidos,edad,cargo,direccion,localidad,telefono1,telefono2,correoelectronico,img,ultimos) values('dni5','nombre5','apellidos5','edad1','cargo5','direccion5','localidad1','telefono15','telefono25','correoelectronico5','sin imagen',0);");
-        tx.executeSql("insert into empleados(dni,nombre,apellidos,edad,cargo,direccion,localidad,telefono1,telefono2,correoelectronico,img,ultimos) values('dni6','nombre6','apellidos6','edad1','cargo6','direccion6','localidad1','telefono16','telefono26','correoelectronico6','sin imagen',0);");
+        tx.executeSql("insert into empleados(dni,nombre,apellidos,edad,cargo,direccion,localidad,telefono1,telefono2,correoelectronico,img,ultimos) values('dni2','nombre2','apellidos2','edad2','cargo2','direccion2','localidad2','telefono12','telefono22','correoelectronico2','sin imagen',1);");
+        tx.executeSql("insert into empleados(dni,nombre,apellidos,edad,cargo,direccion,localidad,telefono1,telefono2,correoelectronico,img,ultimos) values('dni3','nombre3','apellidos3','edad3','cargo3','direccion3','localidad3','telefono13','telefono23','correoelectronico3','sin imagen',1);");
+        tx.executeSql("insert into empleados(dni,nombre,apellidos,edad,cargo,direccion,localidad,telefono1,telefono2,correoelectronico,img,ultimos) values('dni4','nombre4','apellidos4','edad4','cargo4','direccion4','localidad4','telefono14','telefono24','correoelectronico4','sin imagen',0);");
+        tx.executeSql("insert into empleados(dni,nombre,apellidos,edad,cargo,direccion,localidad,telefono1,telefono2,correoelectronico,img,ultimos) values('dni5','nombre5','apellidos5','edad5','cargo5','direccion5','localidad5','telefono15','telefono25','correoelectronico5','sin imagen',0);");
+        tx.executeSql("insert into empleados(dni,nombre,apellidos,edad,cargo,direccion,localidad,telefono1,telefono2,correoelectronico,img,ultimos) values('dni6','nombre6','apellidos6','edad6','cargo6','direccion6','localidad6','telefono16','telefono26','correoelectronico6','sin imagen',0);");
+
   },
   createDBSucc:function(){
     window.localStorage.setItem("existe_db",1);
